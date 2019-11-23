@@ -5,7 +5,7 @@ import { Media } from "reactstrap";
 export default ({ users }) => {
   return (
     <div className="mt-4 px-4">
-      Search results
+      Search Results :
       <ListGroup>
         {users.length === 0 && <h3>0 results found</h3>}
         {users.map(user => (
@@ -20,10 +20,11 @@ export default ({ users }) => {
               </Media>
               <Media body>
                 <Media heading>
-                  {user.login} ({user.type})
+                  {user.login} <h6>Type: ({user.type})</h6>
                 </Media>
-                <span>{user.public_repos} repos</span> |{" "}
-                <span>{user.followers} Followers</span>
+                <br />
+                <span>{user.public_repos || "N/A"} Repos</span> |{" "}
+                <span>{user.followers || "N/A"} Followers</span>
               </Media>
             </Media>
           </ListGroupItem>
