@@ -1,6 +1,7 @@
 import React from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
-import { Media } from "reactstrap";
+import { ListGroup } from "reactstrap";
+
+import User from "./User";
 
 export default ({ users }) => {
   return (
@@ -9,25 +10,7 @@ export default ({ users }) => {
       <ListGroup>
         {users.length === 0 && <h3>0 results found</h3>}
         {users.map(user => (
-          <ListGroupItem key={user.id}>
-            <Media>
-              <Media left href="#">
-                <img
-                  height="100px"
-                  src={user.avatar_url}
-                  alt="Generic placeholder"
-                />
-              </Media>
-              <Media body>
-                <Media heading>
-                  {user.login} <h6>Type: ({user.type})</h6>
-                </Media>
-                <br />
-                <span>{user.public_repos || "N/A"} Repos</span> |{" "}
-                <span>{user.followers || "N/A"} Followers</span>
-              </Media>
-            </Media>
-          </ListGroupItem>
+          <User key={user.login} user={user} />
         ))}
       </ListGroup>
     </div>
